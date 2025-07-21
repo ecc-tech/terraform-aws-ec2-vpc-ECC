@@ -1,2 +1,2 @@
-# terraform-aws-ec2-vpc-ECC
+# terraform-aws-vpc-ECC
 this module is used to create VPC 
