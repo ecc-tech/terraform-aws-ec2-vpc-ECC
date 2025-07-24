@@ -15,11 +15,6 @@ variable "availability_zones" {
   
 }
 
-# variable "public_subnets_cidr_blocks" {
-#   description = "List of CIDR blocks for public subnets."
-#   type        = list(string)
-  
-# }
 variable "subnet_cidr_bits" {
   description = "The number of bits to use for subnetting the VPC CIDR block."
   type        = number

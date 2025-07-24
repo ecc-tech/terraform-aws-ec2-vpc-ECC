@@ -98,18 +98,11 @@ resource "aws_route_table" "mainx" {
     gateway_id = aws_internet_gateway.this.id
   }
 
+
   tags = {
     Name = "${var.project}-Default-rt"
   }
 }
-
-# # Route table and subnet associations
-# resource "aws_route_table_association" "internet_access" {
-#   count = var.availability_zones
-
-#   subnet_id      = aws_subnet.public[count.index].id
-#   route_table_id = aws_route_table.main.id
-# }
 
 # NAT Elastic IP
 resource "aws_eip" "mainx" {
@@ -119,7 +112,6 @@ resource "aws_eip" "mainx" {
     Name = "${var.project}-ngw-ip"
   }
 }
-
 
 # Security group for data plane
 resource "aws_security_group" "data_plane_sg" {
@@ -190,7 +182,6 @@ resource "aws_security_group_rule" "control_plane_outbound" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-
 # Security group traffic rules
 resource "aws_security_group_rule" "sg_ingress_public_443" {
   security_group_id = aws_security_group.public_sg.id
@@ -229,6 +220,7 @@ resource "aws_security_group" "public_sg" {
   }
 }
 
+#VPC configuration 
 resource "aws_vpc" "this" {
   cidr_block = var.vpc_cidr     #updated in rushi code.
 
